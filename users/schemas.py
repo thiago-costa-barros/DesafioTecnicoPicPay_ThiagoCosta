@@ -12,3 +12,10 @@ class UserSchema(ModelSchema):
             'taxNumber',
             'password'
             ]
+        
+class TypeSchema(Schema):
+    type: str
+    
+class TypeUserSchema(Schema):
+    user: UserSchema
+    typeUser: TypeSchema

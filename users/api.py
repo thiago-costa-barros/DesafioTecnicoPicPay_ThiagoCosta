@@ -1,21 +1,24 @@
 from ninja import Router
-from .schemas import UserSchema
+from .schemas import TypeUserSchema
 from .models import User
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError 
+from rolepermissions.roles import assign_role
+ 
 
 users_routers = Router()
 
 @users_routers.post('/', response={200:dict, 400:dict, 500:dict})
 
 
-def UsersRouter(request, user: UserSchema):
-    user = User(**user.dict())
-    user.password = make_password(user.password)
+def UsersRouter(request, typeUser: TypeUserSchema):
+    user = User(**typeUser.user.dict())
+    user.password = make_password(typeUser.user.password)
     
     try:
         user.full_clean() # Verify validators
         user.save()
+        assign_role(user, typeUser.typeUser.type)
     except ValidationError as e:
         return 400, {
             'Sucess':'false',
@@ -44,6 +47,7 @@ def UsersRouter(request, user: UserSchema):
             'first_name': user.first_name,
             'last_name': user.last_name,
             'taxNumber': user.taxNumber,
-            'balance': user.balance
-            }
+            'balance': user.balance,
+            'type': typeUser.typeUser.type
         }
+    }
