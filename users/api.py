@@ -27,37 +27,37 @@ def UsersRouter(request, typeUser: TypeUserSchema):
             
     except ValidationError as e:
         return 400, {
-            'Sucess':'false',
-            'StatusCode': 400,
-            'Message': {
+            'sucess':'false',
+            'statusCode': 400,
+            'message': {
                 'type': 'Bad Request',
                 'errors': e.message_dict
             }
         }
     except RoleDoesNotExist as e: 
         return 422, {  
-            'Success': 'false',
-            'StatusCode': 422,
-            'Message': {
+            'success': 'false',
+            'statusCode': 422,
+            'message': {
                 'type': 'Unprocessable Entity',
                 'hint': 'The provided role does not exist.'
             }
         }
     except Exception as e:
         return 500, {
-            'Sucess':'false',
-            'StatusCode': 500,
-            'Message': {
+            'sucess':'false',
+            'statusCode': 500,
+            'message': {
                 'type':'Internal Server Error',
                 'error': str(e)
             }
         }
     
-    return {
-        'Sucess':'true',
-        'StatusCode': 200,
-        'Message': 'User created successfully',
-        'Data': {
+    return 200, {
+        'sucess':'true',
+        'statusCode': 200,
+        'message': 'User created successfully',
+        'payload': {
             'username': user.username,
             'email': user.email,
             'first_name': user.first_name,
