@@ -1,5 +1,5 @@
 from ninja import Router
-from django.db import transaction
+from django.db import transaction as dbTransaction
 from .schemas import TypeUserSchema
 from .models import User
 from django.contrib.auth.hashers import make_password
@@ -18,7 +18,7 @@ def UsersRouter(request, typeUser: TypeUserSchema):
     user.password = make_password(typeUser.user.password)
     
     try:
-        with transaction.atomic():  
+        with dbTransaction.atomic():  
             user.full_clean()  
             user.save()  
 
