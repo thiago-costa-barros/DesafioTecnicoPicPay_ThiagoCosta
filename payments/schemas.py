@@ -4,9 +4,7 @@ from .models import Entry
 
 class EntrySchema(ModelSchema):
     
-    entryValue: float = Decimal('0.00')
-    payer: int  
-    payee: int
+    entryValue: Decimal
     
     class Meta:
         model = Entry

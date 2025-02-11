@@ -105,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+TESTE_AUTHORIZED_TRANSACTION_ENDPOINT = 'https://run.mocky.io/v3/f1a4bd64-a05f-4d13-865b-8f207d574d7c' # Authorized
+#TESTE_AUTHORIZED_TRANSACTION_ENDPOINT = 'https://run.mocky.io/v3/19d36289-b693-44a5-b9b9-f9f76d7fe359' # Unauthorized
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
