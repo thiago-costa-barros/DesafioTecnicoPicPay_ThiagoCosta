@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rolepermissions',
-    'users'
+    'users',
+    'payments'
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -103,6 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+TESTE_AUTHORIZED_TRANSACTION_ENDPOINT = 'https://run.mocky.io/v3/f1a4bd64-a05f-4d13-865b-8f207d574d7c' # Authorized
+#TESTE_AUTHORIZED_TRANSACTION_ENDPOINT = 'https://run.mocky.io/v3/19d36289-b693-44a5-b9b9-f9f76d7fe359' # Unauthorized
 
 
 # Internationalization
