@@ -8,7 +8,6 @@ from users.models import User
 from .validator import isPayerAndPayeeTheSame ,isPayerHasBalance, isPayerHasPermissionToCashOut, isPayeeHasPermissionToCashIn
 from django.core.exceptions import ValidationError
 from decimal import Decimal
-from core.serialyzer import DecimalEncoder
 import requests
 import json
 from core.settings import TESTE_AUTHORIZED_TRANSACTION_ENDPOINT
